@@ -1,0 +1,11 @@
+ErrorDocument 401 /AlgoBreizh/view/error401.php
+ErrorDocument 403 /AlgoBreizh/view/error403.php
+ErrorDocument 404 /AlgoBreizh/view/error404.php
+ErrorDocument 500 /AlgoBreizh/view/error500.php
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^thumbnail/ /AlgoBreizh/img/warning_sign.png [NC,L]
