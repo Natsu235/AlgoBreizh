@@ -4,7 +4,6 @@ require_once 'controller/loginController.php';
 require_once 'controller/productsController.php';
 require_once 'controller/cartController.php';
 require_once 'controller/ordersController.php';
-require_once 'controller/addProductsController.php';
 require_once 'controller/successController.php';
 require_once 'view/view.php';
 
@@ -15,7 +14,6 @@ class Router {
 	private $productsCtrl;
 	private $cartCtrl;
 	private $ordersCtrl;
-	private $addProductsCtrl;
 	private $successCtrl;
 
     public function __construct() {
@@ -24,7 +22,6 @@ class Router {
 		$this->productsCtrl = new ProductsController();
 		$this->cartCtrl = new CartController();
 		$this->ordersCtrl = new OrdersController();
-		$this->addProductsCtrl = new AddProductsController();
 		$this->successCtrl = new SuccessController();
     }
 
@@ -59,32 +56,9 @@ class Router {
 				$this->loginCtrl->show("welcome");
 				return;
 			}
-			// Affiche la vue d'ajout d'un produit
-			if ($_GET['action'] == 'addProducts') {
-				$this->addProductsCtrl->show();
-			}
 			// Affiche la vue de succès
 			if ($_GET['action'] == 'success') {
 				$this->successCtrl->show();
-			}
-			// Ajoute le produit en base
-			if ($_GET['action'] == 'addProduct') {
-				try {
-					$name = $this->getParameter($_POST,'name');
-					$price = $this->getParameter($_POST,'price');
-					$image = $this->getParameter($_POST,'image');
-					$this->addProductsCtrl->addProduct($name, $price, $image);
-					header("Location: index.php?action=success");
-				}
-				catch (Exception $e) {
-					$data = unserialize($e->getMessage());
-					if (is_array($data)) {
-						$this->showError($data);
-					}
-					else {
-						$this->showError($e->getMessage());
-					}
-				}
 			}
 			// Affiche la boutique
 			if ($_GET['action'] == 'products') {
@@ -159,13 +133,7 @@ class Router {
         }
 		// Affiche l'erreur rencontrée
         catch (Exception $e) {
-			$data = unserialize($e->getMessage());
-			if (is_array($data)) {
-				$this->showError($data);
-			}
-			else {
-				$this->showError($e->getMessage());
-			}
+			$this->showError($e->getMessage());
         }
 	}
 

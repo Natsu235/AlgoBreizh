@@ -1,11 +1,23 @@
-/*! DataTables 1.10.19
+/*
+ * This combined file was created by the DataTables downloader builder:
+ *   https://datatables.net/download
+ *
+ * To rebuild or modify this file with the latest versions of the included
+ * software please visit:
+ *   https://datatables.net/download/#dt/dt-1.10.18
+ *
+ * Included libraries:
+ *   DataTables 1.10.18
+ */
+
+/*! DataTables 1.10.18
  * ©2008-2018 SpryMedia Ltd - datatables.net/license
  */
 
 /**
  * @summary     DataTables
  * @description Paginate, search and order HTML tables
- * @version     1.10.19
+ * @version     1.10.18
  * @file        jquery.dataTables.js
  * @author      SpryMedia Ltd
  * @contact     www.datatables.net
@@ -9464,7 +9476,7 @@
 	 *  @type string
 	 *  @default Version number
 	 */
-	DataTable.version = "1.10.19";
+	DataTable.version = "1.10.18";
 
 	/**
 	 * Private data store, containing all of the settings objects that are
@@ -13886,7 +13898,7 @@
 		 *
 		 *  @type string
 		 */
-		builder: "-source-",
+		build:"dt/dt-1.10.18",
 	
 	
 		/**
@@ -14975,8 +14987,7 @@
 	
 		text: function () {
 			return {
-				display: __htmlEscapeEntities,
-				filter: __htmlEscapeEntities
+				display: __htmlEscapeEntities
 			};
 		}
 	};
@@ -15295,3 +15306,5 @@
 
 	return $.fn.dataTable;
 }));
+
+

@@ -49,11 +49,13 @@
 	border-radius: 0 0 2px 2px;
 	background-clip: padding-box;
 	box-sizing: border-box;
+	height: 70px;
 }
 
 .card .card-content p {
 	margin: 0;
 	color: inherit;
+	font-size: 16px;
 }
 
 .card .card-content span.card-title {
@@ -72,6 +74,14 @@
 
 .card .card-action a:hover {
 	text-decoration: none;
+}
+
+.card.center {
+	height: 230px;
+}
+
+.no-scroll {
+	overflow: hidden;
 }
 
 .btn {

@@ -6,7 +6,7 @@ class CartManager extends Model {
 
 	// Renvoie la liste des commandes associés à un client
 	public function __construct() {
-		if (!isset($_SESSION['cart'])){
+		if (!isset($_SESSION['cart'])) {
 			$_SESSION['cart']=array();
 		}
     }
@@ -26,16 +26,16 @@ class CartManager extends Model {
 			}
 		}
 
-		if (!$exist){
+		if (!$exist) {
 			array_push($_SESSION['cart'], $attProduct);
 		}
 		return true;
 	}
 
-	//Decrémente & ou retire de la liste l'élément correspondant.
+	// Decrémente ou retire de la liste l'élément correspondant
 	public function delete($productId) {
-		for ($i=0; $i < count($_SESSION['cart']);$i++){
-			if ($productId == $_SESSION['cart'][$i]->id()){
+		for ($i=0; $i < count($_SESSION['cart']);$i++) {
+			if ($productId == $_SESSION['cart'][$i]->id()) {
 				$_SESSION['cart'][$i]->setQuantity($_SESSION['cart'][$i]->quantity() - 1);
 			}
 			if ($_SESSION['cart'][$i]->quantity() <=0){

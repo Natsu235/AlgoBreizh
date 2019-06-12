@@ -19,7 +19,7 @@ class CartController {
 		$view->generate(array('cart' => $this->cartManager->get()));
     }	
 
-	public function addToCart($producId, $quantity,$output) {
+	public function addToCart($producId, $quantity, $output) {
 		if ($this->cartManager->add($producId, $quantity)) {
 			$return['code'] = 'success';
 		}
@@ -47,7 +47,7 @@ class CartController {
 	public function checkOut() {
 		$order = new Order(array(
 			'id' => 1,
-			'creationDate' => date(DATE_W3C),
+			'creationDate' => date('Y-m-d H:i:s'),
 			'id_tCustomers' => $_SESSION['customer'],
 			'state' => '0'
 		),

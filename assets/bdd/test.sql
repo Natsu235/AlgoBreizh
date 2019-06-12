@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 12 juin 2019 à 14:06
+-- Généré le :  mer. 24 avr. 2019 à 09:10
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -25,11 +25,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tcustomers`
+-- Structure de la table `tCustomers`
 --
 
-DROP TABLE IF EXISTS `tcustomers`;
-CREATE TABLE IF NOT EXISTS `tcustomers` (
+DROP TABLE IF EXISTS `tCustomers`;
+CREATE TABLE IF NOT EXISTS `tCustomers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
   `firstname` varchar(255) DEFAULT NULL,
@@ -42,10 +42,10 @@ CREATE TABLE IF NOT EXISTS `tcustomers` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `tcustomers`
+-- Déchargement des données de la table `tCustomers`
 --
 
-INSERT INTO `tcustomers` (`id`, `username`, `firstname`, `lastname`, `password`, `email`, `enabled`, `rights`) VALUES
+INSERT INTO `tCustomers` (`id`, `username`, `firstname`, `lastname`, `password`, `email`, `enabled`, `rights`) VALUES
 (1, 'qmz', 'Quentin', 'Martinez', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'qmz@algobreizh.fr', 1, 0),
 (2, 'bst', 'Paul', 'Besret', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'bst@algobreizh.fr', 1, 0),
 (3, 'dpe', 'Dorian', 'Pilorge', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'dpe@algobreizh.fr', 1, 0),
@@ -54,11 +54,11 @@ INSERT INTO `tcustomers` (`id`, `username`, `firstname`, `lastname`, `password`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `torders`
+-- Structure de la table `tOrders`
 --
 
-DROP TABLE IF EXISTS `torders`;
-CREATE TABLE IF NOT EXISTS `torders` (
+DROP TABLE IF EXISTS `tOrders`;
+CREATE TABLE IF NOT EXISTS `tOrders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `creationDate` datetime DEFAULT NULL,
   `state` int(11) DEFAULT NULL,
@@ -68,10 +68,10 @@ CREATE TABLE IF NOT EXISTS `torders` (
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `torders`
+-- Déchargement des données de la table `tOrders`
 --
 
-INSERT INTO `torders` (`id`, `creationDate`, `state`, `id_tCustomers`) VALUES
+INSERT INTO `tOrders` (`id`, `creationDate`, `state`, `id_tCustomers`) VALUES
 (21, '2018-02-26 14:41:23', 1, 1),
 (22, '2018-02-26 15:24:52', 1, 1),
 (23, '2018-02-27 10:30:30', 1, 1),
@@ -80,11 +80,11 @@ INSERT INTO `torders` (`id`, `creationDate`, `state`, `id_tCustomers`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `torders_products`
+-- Structure de la table `tOrders_products`
 --
 
-DROP TABLE IF EXISTS `torders_products`;
-CREATE TABLE IF NOT EXISTS `torders_products` (
+DROP TABLE IF EXISTS `tOrders_products`;
+CREATE TABLE IF NOT EXISTS `tOrders_products` (
   `quantity` int(11) DEFAULT NULL,
   `id_tProducts` int(11) NOT NULL,
   `id_tOrders` int(11) NOT NULL,
@@ -93,10 +93,10 @@ CREATE TABLE IF NOT EXISTS `torders_products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `torders_products`
+-- Déchargement des données de la table `tOrders_products`
 --
 
-INSERT INTO `torders_products` (`quantity`, `id_tProducts`, `id_tOrders`) VALUES
+INSERT INTO `tOrders_products` (`quantity`, `id_tProducts`, `id_tOrders`) VALUES
 (1, 2, 24),
 (4, 3, 22),
 (7, 3, 23),
@@ -107,11 +107,11 @@ INSERT INTO `torders_products` (`quantity`, `id_tProducts`, `id_tOrders`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tproducts`
+-- Structure de la table `tProducts`
 --
 
-DROP TABLE IF EXISTS `tproducts`;
-CREATE TABLE IF NOT EXISTS `tproducts` (
+DROP TABLE IF EXISTS `tProducts`;
+CREATE TABLE IF NOT EXISTS `tProducts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `price` float DEFAULT NULL,
@@ -120,10 +120,10 @@ CREATE TABLE IF NOT EXISTS `tproducts` (
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `tproducts`
+-- Déchargement des données de la table `tProducts`
 --
 
-INSERT INTO `tproducts` (`id`, `name`, `price`, `reference`) VALUES
+INSERT INTO `tProducts` (`id`, `name`, `price`, `reference`) VALUES
 (1, 'Chondrus crispus', 10, 'P001'),
 (2, 'Conserves', 8, 'P002'),
 (3, 'Court bouillon', 12, 'P003'),
@@ -143,24 +143,26 @@ INSERT INTO `tproducts` (`id`, `name`, `price`, `reference`) VALUES
 (17, 'Sels aux algues', 17, 'P017'),
 (18, 'Tisane aux algues', 7, 'P018'),
 (19, 'Wakamé en feuilles', 5, 'P019'),
-(20, 'Wakamé en paillettes', 8, 'P020');
+(20, 'Wakamé en paillettes', 8, 'P020'),
+(27, 'test', 5, 'P120'),
+(28, 'Test', 5, 'P120');
 
 --
 -- Contraintes pour les tables déchargées
 --
 
 --
--- Contraintes pour la table `torders`
+-- Contraintes pour la table `tOrders`
 --
-ALTER TABLE `torders`
-  ADD CONSTRAINT `FK_tOrders_id_tCustomers` FOREIGN KEY (`id_tCustomers`) REFERENCES `tcustomers` (`id`);
+ALTER TABLE `tOrders`
+  ADD CONSTRAINT `FK_tOrders_id_tCustomers` FOREIGN KEY (`id_tCustomers`) REFERENCES `tCustomers` (`id`);
 
 --
--- Contraintes pour la table `torders_products`
+-- Contraintes pour la table `tOrders_products`
 --
-ALTER TABLE `torders_products`
-  ADD CONSTRAINT `FK_tOrders_products_id` FOREIGN KEY (`id_tProducts`) REFERENCES `tproducts` (`id`),
-  ADD CONSTRAINT `FK_tOrders_products_id_tOrders` FOREIGN KEY (`id_tOrders`) REFERENCES `torders` (`id`);
+ALTER TABLE `tOrders_products`
+  ADD CONSTRAINT `FK_tOrders_products_id` FOREIGN KEY (`id_tProducts`) REFERENCES `tProducts` (`id`),
+  ADD CONSTRAINT `FK_tOrders_products_id_tOrders` FOREIGN KEY (`id_tOrders`) REFERENCES `tOrders` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

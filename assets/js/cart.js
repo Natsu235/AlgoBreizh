@@ -3,8 +3,7 @@
 // -------------------------------------
 
 
-function httpGetAsync(theUrl, callback)
-{
+function httpGetAsync(theUrl, callback) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
@@ -14,39 +13,28 @@ function httpGetAsync(theUrl, callback)
     xmlHttp.send(null);
 }
 
-// Ajoute l'article au panier
-object.onclick = function() {
-	$.ajax({
-        url : 'controller/Router.php?action=addToCart',
-        type : 'GET',
-        data: {
-			amount = null;
-    });
-};
-
 // Paramètres du DataTable
 $(document).ready(function() {
 	$("#cartTable").DataTable({
-		"stateSave": true,
-		"ordering": false,
-		"deferRender": false,
-		"bFilter": false,
-  		"bLengthChange": false,
-		"responsive": true,
-		"page": true,
-		"pagingType": "scrolling",
-		"language": { 
-			"url": 'assets/json/french.cart.json'
+		stateSave: true,
+		ordering: false,
+		deferRender: false,
+		bFilter: false,
+  		bLengthChange: false,
+		responsive: true,
+		page: true,
+		pagingType: 'simple',
+		language: {
+			url: 'assets/json/french.cart.json'
 		},
-	  	"aoColumns": [
-		   {"bSortable": true},
-		   {"bSortable": true},
-		   {"bSortable": true},
-		   {"bSortable": true},
-		   {"bSortable": true}
+	  	aoColumns: [
+		   { bSortable: true },
+		   { bSortable: true },
+		   { bSortable: true },
+		   { bSortable: true },
+		   { bSortable: true }
 	  	],
-		"processing": true,
-	  	"serverSide": false,
+		processing: true,
+	  	serverSide: false
 	});
 });
-

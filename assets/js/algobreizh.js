@@ -13,7 +13,7 @@ $.ajax({
 	dataType: 'json',
 	success: function(json) {
 		if (json['code'] == 'logged') {
-			if ($(".pageTitle").html() == "Accueil") {
+			if ($(".pageTitle").html() == "⮚ Accueil") {
 				$(".pageTitle").html("Bonjour "+json['firstname']+ "!");
 			}
 			var loginTitle = "Session: ";
