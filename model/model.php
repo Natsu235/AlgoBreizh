@@ -13,10 +13,6 @@ abstract class Model {
     /** Objet PDO d'accès à la BDD */
     private $bdd;
 
-    public function __construct($data) {
-        $this->hydrate($data);
-    }
-
     /**
      * Exécute une requête SQL éventuellement paramétrée
      * 
