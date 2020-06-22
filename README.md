@@ -1,4 +1,4 @@
 # AlgoBreizh
 A shopping website made for the fictive company "AlgoBreizh".
 
-A live preview is available [here](https://algobreizh.store).
+A live preview is available [here](https://aftec-algobreizh.herokuapp.com/).

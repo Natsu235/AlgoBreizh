@@ -10,8 +10,12 @@ require_once('config_smtp.php');
 
 abstract class Model {
 
-    /** Objet PDO d'accès à la BD */
+    /** Objet PDO d'accès à la BDD */
     private $bdd;
+
+    public function __construct($data) {
+        $this->hydrate($data);
+    }
 
     /**
      * Exécute une requête SQL éventuellement paramétrée
@@ -32,14 +36,14 @@ abstract class Model {
     }
 
     /**
-     * Renvoie un objet de connexion à la BD en initialisant la connexion au besoin
+     * Renvoie un objet de connexion à la BDD en initialisant la connexion au besoin
      * 
      * @return PDO L'objet PDO de connexion à la BDD
      */
     private function getBdd() {
         if ($this->bdd == null) {
             // Création de la connexion
-            $this->bdd = new PDO('mysql:host=localhost;dbname=algobreizh;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $this->bdd = new PDO('mysql:host=w1kr9ijlozl9l79i.chr7pe7iynqr.eu-west-1.rds.amazonaws.com;dbname=rfysaixx5duuce25;port=3306;charset=utf8', 'ixvj1vei7e0y4psa', 'gf627yddnauxn3pv', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
         return $this->bdd;
     }
